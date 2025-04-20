@@ -30,7 +30,7 @@
   border-radius: 4px;
 }
 
-button:hover {
+.button:hover {
   background: #7fb39a;
 }
 

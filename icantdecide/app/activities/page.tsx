@@ -30,7 +30,7 @@ interface Place {
       };
     };
   };
-  distance?: number; // May be calculated on client
+  distance?: number; 
 }
 
 interface UserLocation {
@@ -57,14 +57,13 @@ export default function Activities() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Calculate distance between two coordinates in km
   const calculateDistance = (
     lat1: number,
     lon1: number,
     lat2: number,
     lon2: number
   ) => {
-    const R = 6371; // Radius of the earth in km
+    const R = 6371; 
     const dLat = deg2rad(lat2 - lat1);
     const dLon = deg2rad(lon2 - lon1);
     const a =
@@ -74,7 +73,7 @@ export default function Activities() {
         Math.sin(dLon / 2) *
         Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    const d = R * c; // Distance in km
+    const d = R * c;
     return d;
   };
 
@@ -107,7 +106,6 @@ export default function Activities() {
 
           const data = await response.json();
 
-          // Calculate distance for each place
           const placesWithDistance = data.results.map((place: Place) => {
             const distance = calculateDistance(
               latitude,
