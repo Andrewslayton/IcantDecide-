@@ -21,10 +21,15 @@ export default function Home() {
       <h1 className={styles.title}>What are you looking for today?</h1>
       <div className={styles.grid}>
         {categories.map((category) => (
-          <Link href={category.path} key={category.name}>
+          <Link
+            href={category.path}
+            key={category.name}
+            className={styles.gridLink} // Add this class
+          >
             <div
               className={styles.card}
               style={{ backgroundColor: category.color }}
+              data-category={category.name}
             >
               <h2>{category.name}</h2>
             </div>
