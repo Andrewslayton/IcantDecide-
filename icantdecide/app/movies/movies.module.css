@@ -1,145 +1,347 @@
+/* Enhanced vibrant styling for the movies page */
 .container {
+  min-height: 100vh;
   padding: 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.contentContainer {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.form {
-  background: #f5f5f5;
-  padding: 2rem;
-  border-radius: 10px;
+.title {
+  font-size: 2.5rem;
+  text-align: center;
   margin: 2rem 0;
+  color: #2d3748;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 20px;
+  margin: 2rem 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.form:hover {
+  transform: translateY(-5px);
 }
 
 .formGroup {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .formGroup label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
   font-weight: bold;
+  color: #2d3748;
+  font-size: 1.1rem;
 }
 
 .formGroup select,
-.formGroup input {
+.formGroup input[type="date"] {
   width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.button {
-  background: #45B7D1;
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  padding: 0.8rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
   font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: white;
 }
 
-.button:hover {
-  background: #3a9cb3;
+.formGroup select:focus,
+.formGroup input[type="date"]:focus {
+  border-color: #45B7D1;
+  box-shadow: 0 0 0 3px rgba(69, 183, 209, 0.3);
+  outline: none;
 }
 
-.results {
-  margin-top: 2rem;
-}
-
-.movieCard {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.movieCard h3 {
-  margin-top: 0;
-  color: #333;
-}
-/* Add these new styles to the existing CSS file */
-.error {
-  color: #dc2626;
-  background: #fee2e2;
-  padding: 1rem;
-  border-radius: 4px;
-  margin: 1rem 0;
-}
-
-.movieCard {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.moviePoster {
-  width: 200px;
-  height: auto;
-  border-radius: 4px;
-}
-
-.movieInfo {
-  flex: 1;
-}
-
-.overview {
-  color: #666;
-  line-height: 1.5;
-}
-
-.button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
-
+/* Slider container styling */
 .sliderContainer {
-  position: relative;
-  padding: 10px 0;
+  padding: 1rem 0;
 }
 
 .slider {
+  -webkit-appearance: none;
   width: 100%;
   height: 8px;
-  -webkit-appearance: none;
-  background: #ddd;
-  border-radius: 4px;
+  border-radius: 5px;
+  background: #e2e8f0;
   outline: none;
-  opacity: 0.7;
   transition: opacity 0.2s;
-}
-
-.slider:hover {
-  opacity: 1;
 }
 
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
-  background: #45B7D1;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
+  background: #45B7D1;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(69, 183, 209, 0.5);
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #3a9cb3;
 }
 
 .slider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  background: #45B7D1;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
+  background: #45B7D1;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(69, 183, 209, 0.5);
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  background: #3a9cb3;
 }
 
 .sliderLabels {
   display: flex;
   justify-content: space-between;
-  margin-top: 5px;
-  color: #666;
-  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  color: #4a5568;
+  font-weight: 500;
 }
 
-.sliderLabels span {
+.ratingDisplay {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #45B7D1;
+  margin: 0.5rem 0;
+}
+
+/* Submit button */
+.button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  background: #45B7D1;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(69, 183, 209, 0.2);
   position: relative;
-  top: -10px;
+  overflow: hidden;
+}
+
+.button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.button[type="submit"]:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(69, 183, 209, 0.3);
+  background: #3a9cb3;
+}
+
+.button[type="submit"]:hover::before {
+  transform: translateX(0);
+}
+
+.button[type="submit"]:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+}
+
+/* Movie results */
+.results {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.movieCard {
+  display: flex;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.movieCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.moviePoster {
+  width: 150px;
+  height: 225px;
+  object-fit: cover;
+}
+
+.movieInfo {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.movieInfo h3 {
+  margin-top: 0;
+  color: #2d3748;
+  font-size: 1.5rem;
+}
+
+.overview {
+  color: #4a5568;
+  line-height: 1.6;
+  margin-top: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.movieMeta {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1rem 0;
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  background: rgba(69, 183, 209, 0.1);
+  border-radius: 20px;
+  color: #45B7D1;
+  font-weight: bold;
+}
+
+.rating::before {
+  content: '★';
+  margin-right: 0.3rem;
+}
+
+.date {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  background: rgba(69, 183, 209, 0.1);
+  border-radius: 20px;
+  color: #45B7D1;
+}
+
+.date::before {
+  content: '📅';
+  margin-right: 0.3rem;
+}
+
+/* Pagination controls */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 0 2rem;
+  gap: 1rem;
+}
+
+.paginationButton {
+  background: #45B7D1;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(69, 183, 209, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.paginationButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.paginationButton:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(69, 183, 209, 0.3);
+  background: #3a9cb3;
+}
+
+.paginationButton:hover::before {
+  transform: translateX(0);
+}
+
+.paginationButton:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.pageInfo {
+  font-weight: bold;
+  color: #2d3748;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+  background: #fed7d7;
+  color: #c53030;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(197, 48, 48, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .movieCard {
+    flex-direction: column;
+  }
+
+  .moviePoster {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .pagination {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }

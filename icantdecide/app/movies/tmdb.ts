@@ -1,10 +1,8 @@
+import dotenv from "dotenv";
 
-import dotenv from "dotenv"; 
-
-dotenv.config(); 
+dotenv.config();
 const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const BASE_URL = "https://api.themoviedb.org/3";
-
 
 export interface TMDBMovie {
   id: number;
@@ -20,15 +18,17 @@ export interface MovieSearchResponse {
   results: TMDBMovie[];
   total_pages: number;
   total_results: number;
+  page: number;
 }
 
 export const fetchMovies = async (
   genre?: string,
   rating?: string,
-  date?: string
-): Promise<TMDBMovie[]> => {
+  date?: string,
+  page: number = 1
+): Promise<MovieSearchResponse> => {
   try {
-    let url = `${BASE_URL}/discover/movie?api_key=${TMDB_API_KEY}&language=en-US&sort_by=popularity.desc`;
+    let url = `${BASE_URL}/discover/movie?api_key=${TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&page=${page}`;
 
     if (genre) {
       url += `&with_genres=${genre}`;
@@ -46,10 +46,10 @@ export const fetchMovies = async (
     }
 
     const data: MovieSearchResponse = await response.json();
-    return data.results.slice(0, 5); // Return only 5 movies
+    return data;
   } catch (error) {
     console.error("Error fetching movies:", error);
-    return [];
+    return { results: [], total_pages: 0, total_results: 0, page: 1 };
   }
 };
 
