@@ -6,6 +6,7 @@ export async function GET(request: Request) {
   const radius = searchParams.get("radius");
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
+  const pagetoken = searchParams.get("pagetoken");
 
   if (!type || !radius || !lat || !lng) {
     return NextResponse.json(
@@ -15,7 +16,11 @@ export async function GET(request: Request) {
   }
 
   const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
-  const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=${radius}&type=${type}&key=${GOOGLE_API_KEY}`;
+  let url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=${radius}&type=${type}&key=${GOOGLE_API_KEY}`;
+
+  if (pagetoken) {
+    url += `&pagetoken=${pagetoken}`;
+  }
 
   try {
     const response = await fetch(url);
@@ -23,6 +28,9 @@ export async function GET(request: Request) {
     return NextResponse.json(data);
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: "Failed to fetch data" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to fetch data" },
+      { status: 500 }
+    );
   }
 }

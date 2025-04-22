@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import styles from "./movies.module.css";
-import { fetchMovies, TMDBMovie, genreMap, MovieSearchResponse } from "./tmdb";
+import { fetchMovies, TMDBMovie, genreMap, } from "./tmdb";
 
 interface MovieFilters {
   genre: string;
@@ -50,8 +50,6 @@ export default function Movies() {
         totalPages: data.total_pages,
         totalResults: data.total_results,
       });
-    } catch (err) {
-      setError("Failed to fetch movies. Please try again.");
     } finally {
       setLoading(false);
     }
